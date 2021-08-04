@@ -81,5 +81,24 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
     }
-    //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+//<<<<<<<<<<<<<<<<<<<<<<<Failing Testcase>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@Test
+    public void total_price_of_item_is_same_as_expected_value(){
+        LocalTime openingTime = LocalTime.parse("10:30:00");
+        LocalTime closingTime = LocalTime.parse("22:00:00");
+        restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        List<Item> menu = new ArrayList<Item>();
+        Item newItem = new Item("Sweet corn soup",119);
+        menu.add(newItem);
+        Item newItem1 = new Item("Vegetable lasagne", 269);
+        menu.add(newItem1);
+
+        int totalPrice = restaurant.totalPrice(menu);
+        assertEquals(388,totalPrice);
+    }
+
 }
