@@ -63,7 +63,16 @@ public class Restaurant {
                 +"Menu:"+"\n"+getMenu());
 
     }
+    public int totalPrice( List<Item> item1){
+        int price = 0;
+        for(Item current_item : item1) {
+            price = price + current_item.getPrice();
 
+            }
+        return price;
+
+
+    }
     public String getName() {
         return name;
     }
